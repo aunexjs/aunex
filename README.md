@@ -1,19 +1,78 @@
-[![MEAN.JS Logo](http://meanjs.org/img/logo-small.png)](http://meanjs.org/)
+## AuNEX.JS
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/meanjs/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/meanjs/mean.svg?branch=master)](https://travis-ci.org/meanjs/mean)
-[![Dependencies Status](https://david-dm.org/meanjs/mean.svg)](https://david-dm.org/meanjs/mean)
-[![Coverage Status](https://coveralls.io/repos/meanjs/mean/badge.svg?branch=master&service=github)](https://coveralls.io/github/meanjs/mean?branch=master)
+AuNEX.JS is a project that takes the foundation created by [MEAN.JS](http://meanjs.org) and explores the 
+feasibility of several new major concepts that have occurred in the web development world since the dawn of the MEAN
+ stack.
 
-MEAN.JS is a full-stack JavaScript open-source solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+AuNEX is a full-stack JavaScript open-source solution, which provides a solid starting point for 
+[Aurelia](http://aurelia.io/), [Express](http://expressjs.com/), [Node.js](http://www.nodejs.org/) and Polyglot 
+Persistence based applications. The idea is to solve the common issues with connecting those frameworks, build a 
+robust framework to support daily development needs, and help developers use better practices while working with 
+popular JavaScript components.
+
+## Motivation
+MEAN.JS created an excellent starting point for modern SPA's. Most of the principles laid down by the project are still 
+ valid however, several trends are developing that diverge from the intent of MEAN.JS enough to warrant an independent 
+ project. 
+
+### Aurelia
+The biggest breaking change is the use of Aurelia as a front end Framework. Trying to pick a winner of the front end
+ framework battles is a fools errand however the principles stated by the Aurelia team seem to be the most solid 
+ expression of a stable future I've seen. Therefore the first major goal of AuNEX is to replace Angular 1.0 with 
+Aurelia.  
+
+### Polyglot Persistence
+The other major change I want to pursue is 
+[Polyglot Persistence](http://martinfowler.com/bliki/PolyglotPersistence.html). When the MEAN stack was first proposed, 
+MongoDB was becoming a fairly standardized NoSQL solution for startup SPA's. The experience of several large sites 
+has shown that scalability is best achieved by storing data in a backend that best matches the structure of the data.
+ This is where the 'X' in AuNEX comes in. Projects have a need to utilize many data persistence backends and the
+ application has to keep them integrated. Therefore the second major goal of the project is to demonstrate integration
+  of multiple data persitence solutions including [MongoDB](https://www.mongodb.com/), [neo4j](http://neo4j.com/), 
+   [Cassandra](http://cassandra.apache.org/), RDMS, [Redis](http://redis.io/) and the list goes on.
+
+## Other Concepts
+There are a number of other concepts that AuNEX will set out to explore.
+
+### API first
+[API First Development](http://apievangelist.com/2014/08/11/what-is-an-api-first-strategy-adding-some-dimensions-to-this-new-question/) places emphasis on developing a strong contract between the backend and front-end as the first 
+step to developing a site. A few frameworks have sprung up to support this including [Swagger](http://swagger.io/), 
+[api blueprint](https://apiblueprint.org/), [Mashape](https://www.mashape.com//), [Apiary](https://apiary.io/) etc. 
+An API first strategy will be taken for AuNEX
+
+### Code Documentation
+AuNEX will implement auto-generated code documentation with [jsdoc](http://usejsdoc.org/)
+
+### App Management
+Every site needs a solid management foundation. This should include things like:  
+1. User Management  
+2. Content Management  
+3. Site Analytics  
+4. Project Management  
+5. Server Management  
+6. API Management  
+7. Documentation  
+8. Log Management  
+9. Settings Management  
+10. Style Guidelines  
+11. etc.  
+
+AuNEX will implement a framework to support this.
+
+### Standard Components
+The intent of MEAN.JS was to show integration of frameworks. It included a few standard site components such as user 
+sign-up, articles etc as examples. These items are repetitive, time consuming and fairly structurally similar 
+between sites. The project will attempt to extract these as separately loadable plugins. 
 
 ## Before You Begin
-Before you begin we recommend you read about the basic building blocks that assemble a MEAN.JS application:
-* MongoDB - Go through [MongoDB Official Website](http://mongodb.org/) and proceed to their [Official Manual](http://docs.mongodb.org/manual/), which should help you understand NoSQL and MongoDB better.
-* Express - The best way to understand express is through its [Official Website](http://expressjs.com/), which has a [Getting Started](http://expressjs.com/starter/installing.html) guide, as well as an [ExpressJS](http://expressjs.com/en/guide/routing.html) guide for general express topics. You can also go through this [StackOverflow Thread](http://stackoverflow.com/questions/8144214/learning-express-for-node-js) for more resources.
-* AngularJS - Angular's [Official Website](http://angularjs.org/) is a great starting point. You can also use [Thinkster Popular Guide](http://www.thinkster.io/), and [Egghead Videos](https://egghead.io/).
+Before you begin we recommend you read about the basic building blocks that assemble an AuNEX.JS application:
+* Aurelia - A good first step is to go through the [Aurelia documentation](http://aurelia.io/docs.html) and attempt 
+to build their example projects. 
 * Node.js - Start by going through [Node.js Official Website](http://nodejs.org/) and this [StackOverflow Thread](http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js), which should get you going with the Node.js platform in no time.
-
+* Express - The best way to understand express is through its [Official Website](http://expressjs.com/), which has a [Getting Started](http://expressjs.com/starter/installing.html) guide, as well as an [ExpressJS](http://expressjs.com/en/guide/routing.html) guide for general express topics. You can also go through this [StackOverflow Thread](http://stackoverflow.com/questions/8144214/learning-express-for-node-js) for more resources.
+* Persistence - As a minimum you should understand modern NoSQL databases. AuNEX will implement MongoDB so this is a 
+good place to get started with the concept of NoSQL however you should expand your knowledge of the various 
+alternatives available.
 
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:
@@ -22,56 +81,44 @@ Make sure you have installed all of the following prerequisites on your developm
   * Node v5 IS NOT SUPPORTED AT THIS TIME! 
 * MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
 * Ruby - [Download & Install Ruby](https://www.ruby-lang.org/en/documentation/installation/)
-* Bower - You're going to use the [Bower Package Manager](http://bower.io/) to manage your front-end packages. Make sure you've installed Node.js and npm first, then install bower globally using npm:
+* WebPack - You're going to use the [Webpack Module Bundler](http://webpack.github.io/docs/) to manage your front-end
+ packages and your build process. Make sure you've installed Node.js and npm first, then install webpack globally using 
+ npm:
 
 ```bash
-$ npm install -g bower
+$ npm install -g webpack
 ```
-
-* Grunt - You're going to use the [Grunt Task Runner](http://gruntjs.com/) to automate your development process. Make sure you've installed Node.js and npm first, then install grunt globally using npm:
-
-```bash
-$ npm install -g grunt-cli
-```
-
 * Sass - You're going to use [Sass](http://sass-lang.com/) to compile CSS during your grunt task. Make sure you have ruby installed, and then install Sass using gem install:
 
 ```bash
 $ gem install sass
 ```
 
-* Gulp - (Optional) You may use Gulp for Live Reload, Linting, and SASS or LESS.
-
-```bash
-$ npm install gulp -g
-```
-
-## Downloading MEAN.JS
-There are several ways you can get the MEAN.JS boilerplate:
+## Downloading AuNEX.JS
+There are several ways you can get the AuNEX.JS boilerplate:
 
 ### Cloning The GitHub Repository
-The recommended way to get MEAN.js is to use git to directly clone the MEAN.JS repository:
+The recommended way to get AuNEX.js is to use git to directly clone the AuNEX.JS repository:
 
 ```bash
-$ git clone https://github.com/meanjs/mean.git meanjs
+$ git clone https://github.com/aunexjs/aunex.git aunexjs
 ```
 
-This will clone the latest version of the MEAN.JS repository to a **meanjs** folder.
+This will clone the latest version of the AuNEX.JS repository to a **aunexjs** folder.
 
 ### Downloading The Repository Zip File
-Another way to use the MEAN.JS boilerplate is to download a zip copy from the [master branch on GitHub](https://github.com/meanjs/mean/archive/master.zip). You can also do this using the `wget` command:
+Another way to use the AuNEX.JS boilerplate is to download a zip copy from the [master branch on GitHub](https://github
+.com/aunexjs/aunex/archive/master.zip). You can also do this using the `wget` command:
 
 ```bash
-$ wget https://github.com/meanjs/mean/archive/master.zip -O meanjs.zip; unzip meanjs.zip; rm meanjs.zip
+$ wget https://github.com/aunexjs/aunex/archive/master.zip -O aunexjs.zip; unzip aunexjs.zip; rm aunexjs.zip
 ```
 
-Don't forget to rename **mean-master** after your project name.
-
-### Yo Generator
-Another way would be to use the [Official Yo Generator](http://meanjs.org/generator.html), which generates a copy of the MEAN.JS 0.4.x boilerplate and supplies an application generator to ease your daily development cycles.
+Don't forget to rename **aunex-master** after your project name.
 
 ## Quick Install
-Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop your MEAN application.
+Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from 
+starting to develop your AuNEX application.
 
 The first thing you should do is install the Node.js dependencies. The boilerplate comes pre-bundled with a package.json file that contains the list of modules you need to start your application. To learn more about the modules installed visit the npm & Package.json section.
 
@@ -90,7 +137,7 @@ This command does a few things:
 After the install process is over, you'll be able to run your application using Grunt, just run grunt default task:
 
 ```
-$ grunt
+$ webpack watch
 ```
 
 Your application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000)
@@ -104,7 +151,7 @@ If you encounter any problems, try the Troubleshooting section.
 To run your application with *production* environment configuration, execute grunt as follows:
 
 ```bash
-$ grunt prod
+$ webpack production
 ```
 
 * explore `config/env/production.js` for production environment configuration options
@@ -143,7 +190,7 @@ Finally, execute grunt's prod task `grunt prod`
 You can run the full test suite included with MEAN.JS with the test task:
 
 ```bash
-$ grunt test
+$ webpack test
 ```
 
 This will run both the server-side tests (located in the app/tests/ directory) and the client-side tests (located in the public/modules/*/tests/).
@@ -151,13 +198,19 @@ This will run both the server-side tests (located in the app/tests/ directory) a
 To execute only the server tests, run the test:server task:
 
 ```bash
-$ grunt test:server
+$ webpack test:server
 ```
 
 And to run only the client tests, run the test:client task:
 
 ```bash
-$ grunt test:client
+$ webpack test:client
+```
+
+To execute only the tests in a single file:
+
+```bash
+$tbd
 ```
 
 ## Running your application with Gulp
@@ -236,27 +289,17 @@ $
 $ docker run -p 3000:3000 -p 35729:35729 -v /Users/mdl/workspace/mean-stack/mean/public:/home/mean/public -v /Users/mdl/workspace/mean-stack/mean/app:/home/mean/app --link db:db_1 mean
 ```
 
-## Getting Started With MEAN.JS
-You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).
-In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
-
-## Community
-* Use the [Official Website](http://meanjs.org) to learn about changes and the roadmap.
-* Join #meanjs on freenode.
-* Discuss it in the new [Google Group](https://groups.google.com/d/forum/meanjs)
-* Ping us on [Twitter](http://twitter.com/meanjsorg) and [Facebook](http://facebook.com/meanjs)
-
 ## Contributing
-We welcome pull requests from the community! Just be sure to read the [contributing](https://github.com/meanjs/mean/blob/master/CONTRIBUTING.md) doc to get started.
+We welcome pull requests from the community! Just be sure to read the [contributing](https://github.com/aunexjs/aunex/blob/master/CONTRIBUTING.md) doc to get started.
 
 ## Deploying To Cloud Foundry
 
-Cloud Foundry is an open source platform-as-a-service (PaaS).  The MEANJS project
+Cloud Foundry is an open source platform-as-a-service (PaaS).  The AuNEXJS project
 can easily be deployed to any Cloud Foundry instance.  The easiest way to deploy the
-MEANJS project to Cloud Foundry is to use a public hosted instance.  The two most popular
+AuNEXJS project to Cloud Foundry is to use a public hosted instance.  The two most popular
 instances are [Pivotal Web Services](https://run.pivotal.io/) and
 [IBM Bluemix](https://bluemix.net).  Both provide free trials and support pay-as-you-go models
-for hosting applications in the cloud.  After you have an account follow the below steps to deploy MEANJS.
+for hosting applications in the cloud.  After you have an account follow the below steps to deploy AuNEXJS.
 
 * Install the [Cloud Foundry command line tools](http://docs.cloudfoundry.org/devguide/installcf/install-go-cli.html).
 * Now you need to log into Cloud Foundry from the Cloud Foundry command line.
@@ -283,20 +326,19 @@ After `cf push` completes you will see the URL to your running MEANJS applicatio
 
 Open your browser and go to that URL and your should see your MEANJS app running!
 
-###  Deploying MEANJS To IBM Bluemix
+###  Deploying AuNEXJS To IBM Bluemix
 IBM Bluemix is a Cloud Foundry based PaaS.  By clicking the button below you can signup for Bluemix and deploy
-a working copy of MEANJS to the cloud without having to do the steps above.
+a working copy of AuNEXJS to the cloud without having to do the steps above.
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https%3A%2F%2Fgithub.com%2Fmeanjs%2Fmean)
 
-After the deployment is finished you will be left with a copy of the MEANJS code in your own private Git repo
+After the deployment is finished you will be left with a copy of the AuNEXJS code in your own private Git repo
 in Bluemix complete with a pre-configured build and deploy pipeline.  Just clone the Git repo, make your changes, and
 commit them back.  Once your changes are committed, the build and deploy pipeline will run automatically deploying
 your changes to Bluemix.
 
 ## Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
+Inspired by the great work of the [MEAN.JS team](https://github.com/meanjs/)
 
 ## License
 (The MIT License)
