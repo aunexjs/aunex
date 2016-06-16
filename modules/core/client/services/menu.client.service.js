@@ -1,11 +1,9 @@
-(function () {
-  'use strict';
+export class MenuService {
+  constructor() {
+    init();
+  }
 
-  angular
-    .module('core')
-    .factory('menuService', menuService);
-
-  function menuService() {
+  menuService() {
     var shouldRender;
     var service = {
       addMenu: addMenu,
@@ -19,8 +17,6 @@
       removeSubMenuItem: removeSubMenuItem,
       validateMenuExistence: validateMenuExistence
     };
-
-    init();
 
     return service;
 
@@ -192,4 +188,5 @@
       }
     }
   }
-}());
+}
+

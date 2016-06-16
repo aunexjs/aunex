@@ -16,7 +16,7 @@ app/tests/coverage/
 .idea/
 coverage/
 
-# MEAN.js app and assets
+# AuNEX.js app and assets
 # ======================
 public/dist/
 uploads
@@ -24,8 +24,9 @@ modules/users/client/img/profile/uploads
 config/env/local.js
 config/env/local-*.js
 *.pem
+docs/
 
-# Ignoring MEAN.JS's gh-pages branch for documenation
+# Ignoring AuNEX.JS's gh-pages branch for documenation
 _site/
 
 # General

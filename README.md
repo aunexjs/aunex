@@ -31,6 +31,10 @@ has shown that scalability is best achieved by storing data in a backend that be
   of multiple data persitence solutions including [MongoDB](https://www.mongodb.com/), [neo4j](http://neo4j.com/), 
    [Cassandra](http://cassandra.apache.org/), RDMS, [Redis](http://redis.io/) and the list goes on.
 
+### Webpack
+[Webpack](https://webpack.github.io/) is a fantastic module bundler and fundamentally changes the way file 
+dependencies are managed. Much of the asset management code from MEAN.JS will be replaced by Webpack.
+
 ## Other Concepts
 There are a number of other concepts that AuNEX will set out to explore.
 
@@ -41,7 +45,9 @@ step to developing a site. A few frameworks have sprung up to support this inclu
 An API first strategy will be taken for AuNEX
 
 ### Code Documentation
-AuNEX will implement auto-generated code documentation with [jsdoc](http://usejsdoc.org/)
+AuNEX will implement auto-generated code documentation with [jsdoc](http://usejsdoc.org/). This is perhaps a bit 
+controversial as many projects have moved away from code documentation however I think a strong argument can be made
+ for maintaining the docs such that made my [Tom MacWright](http://www.macwright.org/2015/05/15/defense-of-jsdoc.html).
 
 ### App Management
 Every site needs a solid management foundation. This should include things like:  
@@ -81,6 +87,12 @@ Make sure you have installed all of the following prerequisites on your developm
   * Node v5 IS NOT SUPPORTED AT THIS TIME! 
 * MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
 * Ruby - [Download & Install Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+* JSPM - Ensure that jspm is installed. If you need to install it, use the following command:
+
+```bash
+$ npm install -g jspm
+```
+
 * WebPack - You're going to use the [Webpack Module Bundler](http://webpack.github.io/docs/) to manage your front-end
  packages and your build process. Make sure you've installed Node.js and npm first, then install webpack globally using 
  npm:
